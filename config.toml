@@ -1,0 +1,9 @@
+# toml configure
+application = "tulip"
+sql="refGene.sql"
+data="refGene.txt"
+hg="hg38"
+
+# databases
+[databases]
+mysql = "root:example@(gene_db:3306)/hg"

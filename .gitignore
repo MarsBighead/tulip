@@ -1,7 +1,6 @@
 # Binaries for programs and plugins
 tulip
 var
-*.go
 *.exe
 *.dll
 *.so
