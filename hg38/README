@@ -1,0 +1,14 @@
+- Create table
+    mysql> use hg38;
+    Database changed
+    mysql> source  /home/hbu/tulip/homo/hg38_refGene.sql
+    Query OK, 0 rows affected (0.00 sec)
+
+- Import data
+
+    LOAD DATA LOCAL INFILE "/home/hbu/tulip/homo/refGene.txt" INTO TABLE hg38.refGene; 
+
+- Reference 
+   name : Gene cut style name
+   name2: Gene name
+
