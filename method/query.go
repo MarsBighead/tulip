@@ -1,4 +1,4 @@
-package main
+package method
 
 import (
 	"database/sql"
@@ -12,31 +12,11 @@ import (
 	"net/http"
 	"net/url"
 
-	_ "github.com/go-sql-driver/mysql"
 	"github.com/gorilla/schema"
 )
 
-// Gene Gene structure cut mode
-type Gene struct {
-	ModeName     string `db:"name"            json:"mode_name"`
-	Chromosome   string `db:"chrom"           json:"chromosome"`
-	Strand       string `db:"strand"          json:"strand"`
-	TxStart      int    `db:"txStart"         json:"tx_start"`
-	TxEnd        int    `db:"txEnd"           json:"tx_end"`
-	CdsStart     int    `db:"cdsStart"        json:"-"`
-	CdsEnd       int    `db:"cdsStart"        json:"-"`
-	ExonCount    int    `db:"exonCount"       json:"exon_count"`
-	ExonStarts   []byte `db:"exonStarts"      json:"-"`
-	ExonEnds     []byte `db:"exonEnds"        json:"-"`
-	Score        int    `db:"score"           json:"score"`
-	Gene         string `db:"gene"            json:"gene"`
-	CdsStartStat string `db:"cdsStartStat"    json:"-"`
-	CdsEndStat   string `db:"cdsStartStat"    json:"-"`
-	ExonFrames   []byte `db:"exonFrames"      json:"-"`
-}
-
-// given Create table to store refGene
-func (s *Service) givenGene(w http.ResponseWriter, r *http.Request) {
+//GivenGene given Create table to store refGene
+func (s *Service) GivenGene(w http.ResponseWriter, r *http.Request) {
 	params := r.URL.Query()
 	q, err := queryParams(params)
 	if err != nil {
@@ -54,17 +34,6 @@ func (s *Service) givenGene(w http.ResponseWriter, r *http.Request) {
 		log.Fatal(err)
 	}
 	w.Write(body)
-}
-
-// Query Parse query refGene data struct
-type Query struct {
-	Chromosome string `schema:"chrom"`
-	Gene       string `schema:"gene"`
-	Start      int    `schema:"start"`
-	End        int    `schema:"end"`
-	MinModes   int    `schema:"min_modes"`
-	MaxModes   int    `schema:"max_modes"`
-	ExonCount  int    `sechema:"exon_count"`
 }
 
 func queryParams(uv url.Values) (q *Query, err error) {
