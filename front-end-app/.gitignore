@@ -1,28 +1,12 @@
-# Binaries for programs and plugins
-tulip
-var
-*.exe
-*.dll
-*.so
-*.dylib
-
-# Test binary, build with `go test -c`
-*.test
-
-# Output of the go coverage tool, specifically when used with LiteIDE
-*.out
-
-# Project-local glide cache, RE: https://github.com/Masterminds/glide/issues/736
-.glide/
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # compiled output
-front-end-app/dist
-front-end-app/tmp
-front-end-app/out-tsc
+/dist
+/tmp
+/out-tsc
 
 # dependencies
-front-end-app/node_modules
+/node_modules
 
 # IDEs and editors
 /.idea
