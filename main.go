@@ -20,11 +20,11 @@ func main() {
 	}
 	s := cfg.NewService(db)
 	http.HandleFunc("/v1/gene", s.GivenGene)
-	log.Printf("Test Gene on http://localhost:8002/v1/gene?gene=DMD")
-	err = http.ListenAndServe(":8002", nil) //设置监听的端口
+	log.Printf("Test Gene on http://localhost:8010/v1/gene?gene=DMD")
+	err = http.ListenAndServe(":8010", nil) //设置监听的端口
 	if err != nil {
 		log.Fatal("ListenAndServe: ", err)
 	}
-	log.Printf("Running Server on http://localhost:8002")
+	log.Printf("Running Server on http://localhost:8010")
 	select {}
 }

@@ -1,0 +1,14 @@
+<h2>Gene {{ gene.gene }} Details</h2>
+<div><span>mode name: </span>{{gene.mode_name}}</div>
+<div><span>strand: </span>{{gene.strand}}</div>
+<div><span>tx_start: </span>{{gene.tx_start}}</div>
+<div><span>tx_end: </span>{{gene.tx_end}}</div>
+<div><span>exon_count: </span>{{gene.exon_count}}</div>
+<div><span>exon_count: </span>{{gene.exon_count}}</div>
+<div><span>score: </span>{{gene.score}}</div>
+
+<div>
+    <label>name:
+      <input [(ngModel)]="gene.gene" placeholder="name">
+    </label>
+</div>
