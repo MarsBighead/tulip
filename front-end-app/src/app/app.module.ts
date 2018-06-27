@@ -4,11 +4,13 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { GenesComponent } from './genes/genes.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    GenesComponent
+    GenesComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
