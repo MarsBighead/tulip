@@ -8,5 +8,5 @@ data:
 
 # databases
 databases:
-  - dsn: "root:example@(gene_db:3306)/hg
+  - dsn: root:example@(gene_db:3306)/hg
     switch: on
