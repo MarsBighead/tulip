@@ -1,0 +1,12 @@
+application: tulip
+http:
+  port: 8010
+data:
+  sql: refGene.sql
+  refGene: refGene.txt
+  dbname: hg38
+
+# databases
+databases:
+  - dsn: "root:example@(gene_db:3306)/hg
+    switch: on

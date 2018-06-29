@@ -2,13 +2,25 @@ package method
 
 // Config  configure file for application
 type Config struct {
-	Application string `toml:"application"`
-	Databases   struct {
-		MySQL string `toml:"mysql"`
-	} `toml:"databases"`
-	Hg          string `toml:"hg"`
-	RefGeneSQL  string `toml:"sql"`
-	RefGeneData string `toml:"data"`
+	Application string     `yaml:"application"`
+	Databases   []Database `yaml:"databases"`
+	HTTP        struct {
+		PORT string `yaml:"port"`
+	} `yaml:"http"`
+	Data *Data `yaml:"data"`
+}
+
+//Database configure structure
+type Database struct {
+	DSN    string `yaml:"dsn"`
+	Switch string `yaml:"switch"`
+}
+
+//Data refGene data file information
+type Data struct {
+	SQL     string `yaml:"sql"`
+	RefGene string `yaml:"refGene"`
+	DBNAME  string `yaml:"dbname"`
 }
 
 // Gene Gene structure cut mode

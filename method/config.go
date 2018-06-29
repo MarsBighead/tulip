@@ -1,12 +1,11 @@
 package method
 
 import (
+	"io/ioutil"
 	"log"
-	"os"
-	"path/filepath"
 
-	"github.com/BurntSushi/toml"
 	"github.com/jmoiron/sqlx"
+	yaml "gopkg.in/yaml.v2"
 )
 
 //Service  for connect db and other components
@@ -24,11 +23,16 @@ func (cfg *Config) NewService(db *sqlx.DB) *Service {
 }
 
 // GetConfig  Extract configure information from .toml
-func GetConfig() (cfg *Config, err error) {
-	dir, err := filepath.Abs(filepath.Dir(os.Args[0]))
+func GetConfig(file string) (cfg *Config, err error) {
+
+	body, err := ioutil.ReadFile(file)
 	if err != nil {
 		log.Fatal(err)
 	}
-	_, err = toml.DecodeFile(dir+"/config.toml", &cfg)
+	cfg = new(Config)
+	err = yaml.Unmarshal(body, cfg)
+	if err != nil {
+		log.Fatal(err)
+	}
 	return
 }
