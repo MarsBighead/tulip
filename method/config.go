@@ -3,6 +3,7 @@ package method
 import (
 	"io/ioutil"
 	"log"
+	"strings"
 
 	"github.com/jmoiron/sqlx"
 	yaml "gopkg.in/yaml.v2"
@@ -33,6 +34,16 @@ func GetConfig(file string) (cfg *Config, err error) {
 	err = yaml.Unmarshal(body, cfg)
 	if err != nil {
 		log.Fatal(err)
+	}
+	return
+}
+
+// GetDSN  Extract MySQL dsn configure information
+func (cfg *Config) GetDSN() (dsn string) {
+	for _, db := range cfg.Databases {
+		if strings.ToLower(db.Switch) == "on" {
+			dsn = db.DSN
+		}
 	}
 	return
 }

@@ -26,8 +26,11 @@ func (s *Service) GivenGene(w http.ResponseWriter, r *http.Request) {
 	var geneRows []*Gene
 	sql := q.refGeneSQL()
 	udb := s.db.Unsafe()
-	udb.Select(&geneRows, sql)
-	//log.Println(sql)
+	err = udb.Select(&geneRows, sql)
+	if err != nil {
+		log.Fatal(err)
+	}
+	log.Println("Query result is on the way...")
 
 	body, err := json.MarshalIndent(geneRows, "", "    ")
 	if err != nil {
@@ -75,7 +78,7 @@ func (q *Query) refGeneSQL() (sql string) {
                               score,
 							  name2 gene,
 							  exonFrames 
-					   from hg.refGene
+					   from hg38.refGene
                        %s`, where)
 	//limit 1,5`, where)
 	return

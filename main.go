@@ -14,15 +14,20 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	db, err := sqlx.Open("mysql", cfg.Databases[0].DSN)
+	db, err := sqlx.Open("mysql", cfg.GetDSN())
+	if err != nil {
+		log.Fatal(err)
+	}
+	err = db.Ping()
 	if err != nil {
 		log.Fatal(err)
 	}
 	s := cfg.NewService(db)
-	http.HandleFunc("/v1/gene", s.GivenGene)
+
+	http.HandleFunc("/api/v1/gene", s.GivenGene)
 	//http.Handle("/home/", http.FileServer(http.Dir("static/ui")))
 	http.Handle("/", http.FileServer(http.Dir("static/ui")))
-	log.Printf("Test Gene on http://localhost:" + cfg.HTTP.PORT + "/v1/gene?gene=DMD")
+	log.Printf("Test Gene on http://localhost:" + cfg.HTTP.PORT + "/api/v1/gene?gene=DMD")
 	err = http.ListenAndServe(":"+cfg.HTTP.PORT, nil) //设置监听的端口
 	if err != nil {
 		log.Fatal("ListenAndServe: ", err)
