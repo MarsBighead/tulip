@@ -20,6 +20,8 @@ func main() {
 	}
 	s := cfg.NewService(db)
 	http.HandleFunc("/v1/gene", s.GivenGene)
+	//http.Handle("/home/", http.FileServer(http.Dir("static/ui")))
+	http.Handle("/", http.FileServer(http.Dir("static/ui")))
 	log.Printf("Test Gene on http://localhost:8010/v1/gene?gene=DMD")
 	err = http.ListenAndServe(":8010", nil) //设置监听的端口
 	if err != nil {
