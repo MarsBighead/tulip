@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Gene } from '../gene';
 import { GeneService } from '../gene.service';
-// import { GENES } from '../mock-genes';
+
 @Component({
   selector: 'app-genes',
   templateUrl: './genes.component.html',
@@ -15,8 +15,6 @@ export class GenesComponent implements OnInit {
   
   genes: Gene[];
 
-
-  
   constructor(private geneService: GeneService) { }
 
   ngOnInit() {

@@ -11,7 +11,7 @@ export const GENES: Gene[] = [
     exon_count: 79,
     score: 0,
     gene: "DMD"
-},
+  },
   {
   mode_name: "NM_004021",
   chromosome: "chrX",
