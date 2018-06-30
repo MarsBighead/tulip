@@ -8,10 +8,4 @@
         {{gene.tx_start}} | {{gene.tx_end}} | {{gene.exon_count}} | {{gene.score}}
   </li>
 </ul>
-<div *ngIf="selectedGene">
-    <h2>{{ selectedGene.name | uppercase }} Details</h2>
-    <div><span>mode name: </span>{{selectedGene.mode_name}}</div>
-  <label>mode name:
-    <input [(ngModel)]="selectedGene.mode_name" placeholder="mode_name">
-  </label>
-</div>
+<app-gene-detail [gene]="selectedGene"></app-gene-detail>
