@@ -9,7 +9,7 @@ import { GeneDetailComponent }  from './gene-detail/gene-detail.component';
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
-  { path: 'genes/mode_name/:mode_name', component: GeneDetailComponent },
+  { path: 'genes/:mode_name', component: GeneDetailComponent },
   { path: 'genes', component: GenesComponent },
 ];
 

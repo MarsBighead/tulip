@@ -13,7 +13,7 @@ import { catchError, map, tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class GeneService {
-  private genesUrl = 'api/genes';  // URL to web api
+  private genesUrl = 'api/v1/gene?gene=BRCA1';  // URL to web api
   //private genesUrl = 'api/genes';  // URL to web api
   constructor(
     private http: HttpClient,
@@ -33,7 +33,7 @@ export class GeneService {
 
    /** GET hero by id. Return `undefined` when id not found */
    getGeneNo404<Data>(mode_name: string): Observable<Gene> {
-    const url = `${this.genesUrl}/mode_name/${mode_name}`;
+    const url = `${this.genesUrl}/${mode_name}`;
     return this.http.get<Gene[]>(url)
       .pipe(
         map(heroes => heroes[0]), // returns a {0|1} element array
@@ -47,8 +47,14 @@ export class GeneService {
 
   getGene(mode_name: string): Observable<Gene> {
     // TODO: send the message _after_ fetching the hero
-    this.messageService.add(`GeneService: fetched gene mode_name=${mode_name}`);
-    return of(GENES.find(gene => gene.mode_name === mode_name));
+    const url = `${this.genesUrl}/?mode_name=${mode_name}`;
+    console.log(url)
+    return this.http.get<Gene>(url).pipe(
+      tap(_ => this.log(`fetched hero mode_name=${mode_name}`)),
+      catchError(this.handleError<Gene>(`getHero mode_name=${mode_name}`))
+    );
+    /*this.messageService.add(`GeneService: fetched gene mode_name=${mode_name}`);
+    return of(GENES.find(gene => gene.mode_name === mode_name));*/
     
   }
   /** Log a HeroService message with the MessageService */
