@@ -3,7 +3,7 @@
   <li *ngFor="let gene of genes"
   [class.selected]="gene === selectedGene" 
   (click)="onSelect(gene)">
-  <a routerLink="/detail/{{gene.mode_name}}">
+  <a routerLink="/genes/mode/{{gene.mode_name}}">
     <span class="badge"> {{gene.mode_name}} </span> 
         {{gene.gene}} | {{gene.chromosome}} | {{gene.strand}} | 
         {{gene.tx_start}} | {{gene.tx_end}} | {{gene.exon_count}} | {{gene.score}}
