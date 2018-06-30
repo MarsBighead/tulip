@@ -18,3 +18,4 @@ tar -zcf $UI_PKG *
 mv $UI_PKG $FILE_DIR/../static/ui
 cd $UI
 tar zxf $UI_PKG 
+rm $UI_PKG
