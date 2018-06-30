@@ -62,7 +62,7 @@ func (q *Query) refGeneSQL() (sql string) {
 	if q.Gene != "" {
 		whereConds = append(whereConds, "name2='"+q.Gene+"'")
 	}
-	if q.Gene != "" {
+	if q.ModeName != "" {
 		whereConds = append(whereConds, "name='"+q.ModeName+"'")
 	}
 	if len(whereConds) >= 1 {
@@ -84,6 +84,7 @@ func (q *Query) refGeneSQL() (sql string) {
 					   from hg38.refGene
                        %s`, where)
 	//limit 1,5`, where)
+	//fmt.Println(sql)
 	return
 }
 
