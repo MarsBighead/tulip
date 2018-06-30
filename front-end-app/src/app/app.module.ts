@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { GenesComponent } from './genes/genes.component';
 import { HomeComponent } from './home/home.component';
 import { GeneDetailComponent } from './gene-detail/gene-detail.component';
+import { MessagesComponent } from './messages/messages.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     GenesComponent,
     HomeComponent,
-    GeneDetailComponent
+    GeneDetailComponent,
+    MessagesComponent
   ],
   imports: [
     BrowserModule,

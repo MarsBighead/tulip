@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { Observable, of } from 'rxjs';
+
 import { Gene } from './gene';
 import { GENES } from './mock-genes';
 import { MessageService } from './message.service';
@@ -14,7 +15,7 @@ export class GeneService {
  
   getGenes(): Observable<Gene[]> {
     // TODO: send the message _after_ fetching the heroes
-    this.messageService.add('HeroService: fetched heroes');
+    this.messageService.add('GeneService: fetched genes');
     return of(GENES);
   }
 }
