@@ -7,7 +7,7 @@
   margin: 0 0 2em 0;
   list-style-type: none;
   padding: 0;
-  width: 28em;
+  width: 32em;
 }
 .genes li {
   cursor: pointer;
@@ -33,7 +33,7 @@
   text-decoration: none;
   position: relative;
   display: block;
-  width: 25em;
+  width: 30em;
 }
 
 .genes a:hover {

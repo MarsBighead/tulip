@@ -46,6 +46,7 @@ type Gene struct {
 type Query struct {
 	Chromosome string `schema:"chrom"`
 	Gene       string `schema:"gene"`
+	ModeName   string `schema:"mode_name"`
 	Start      int    `schema:"start"`
 	End        int    `schema:"end"`
 	MinModes   int    `schema:"min_modes"`

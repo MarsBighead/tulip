@@ -62,6 +62,9 @@ func (q *Query) refGeneSQL() (sql string) {
 	if q.Gene != "" {
 		whereConds = append(whereConds, "name2='"+q.Gene+"'")
 	}
+	if q.Gene != "" {
+		whereConds = append(whereConds, "name='"+q.ModeName+"'")
+	}
 	if len(whereConds) >= 1 {
 		where = "where " + strings.Join(whereConds, " and ")
 	}

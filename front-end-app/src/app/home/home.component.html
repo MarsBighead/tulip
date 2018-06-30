@@ -1,7 +1,7 @@
 <h3>Home refGenes</h3>
 <div class="grid grid-pad">
   <a *ngFor="let gene of genes" class="col-1-4"
-      routerLink="/genes/mode_name/{{gene.mode_name}}">
+      routerLink="/genes/{{gene.mode_name}}">
     <div class="module gene">
       <h4>{{gene.mode_name}}</h4>
     </div>
