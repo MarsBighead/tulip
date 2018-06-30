@@ -23,9 +23,6 @@ export class GenesComponent implements OnInit {
     this.getGenes();
   }
 
-  onSelect(gene: Gene): void {
-    this.selectedGene = gene;
-  }
 
   getGenes(): void {
     this.geneService.getGenes()
