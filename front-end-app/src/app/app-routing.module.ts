@@ -10,7 +10,7 @@ const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'genes', component: GenesComponent },
-  { path: 'detail/:mode_name', component: GeneDetailComponent },
+  { path: 'genes/mode/:mode_name', component: GeneDetailComponent },
 ];
 
 
