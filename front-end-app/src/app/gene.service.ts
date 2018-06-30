@@ -18,4 +18,10 @@ export class GeneService {
     this.messageService.add('GeneService: fetched genes');
     return of(GENES);
   }
+
+  getGene(mode_name: string): Observable<Gene> {
+    // TODO: send the message _after_ fetching the hero
+    this.messageService.add(`GeneService: fetched gene mode_name=${mode_name}`);
+    return of(GENES.find(gene => gene.mode_name === mode_name));
+  }
 }
