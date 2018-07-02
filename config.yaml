@@ -9,6 +9,6 @@ data:
 # databases
 databases:
   - dsn: root:vmware@(localhost:3306)/hg38
-    switch: off
-  - dsn: root:togerme@(gene_db:3306)/hg38
     switch: on
+  - dsn: root:togerme@(gene_db:3306)/hg38
+    switch: off

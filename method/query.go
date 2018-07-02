@@ -36,6 +36,7 @@ func (s *Service) GivenGene(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		log.Fatal(err)
 	}
+	w.Header().Add("Access-Control-Allow-Origin", "*")
 	w.Write(body)
 }
 
