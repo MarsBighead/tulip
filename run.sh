@@ -5,8 +5,8 @@ MYSQL_LVM=$TULIP/var/lib/mysql
 GENE_DB=$(docker create -it \
     -v $MYSQL_LVM:/var/lib/mysql   \
     -v $TULIP:/tulip \
-	-e MYSQL_DATABASE=hg \
-	-e MYSQL_ROOT_PASSWORD=example \
+	-e MYSQL_DATABASE=hg38 \
+	-e MYSQL_ROOT_PASSWORD=togerme \
     --name gene_db mysql:5.7 
 )
 docker start $GENE_DB

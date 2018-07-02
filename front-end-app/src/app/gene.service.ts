@@ -13,7 +13,8 @@ import { catchError, map, tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class GeneService {
-  private genesUrl = 'api/v1/gene?gene=BRCA1';  // URL to web api
+  private genesUrl = 'http://localhost:8010/api/v1/gene';  // URL to web api
+  private name ="BRCA1";
   //private genesUrl = 'api/genes';  // URL to web api
   constructor(
     private http: HttpClient,
@@ -23,8 +24,8 @@ export class GeneService {
     // TODO: send the message _after_ fetching the heroes
     this.messageService.add('GeneService: fetched genes');
     //return of(GENES);
-    this.log(this.genesUrl);
-    return this.http.get<Gene[]>(this.genesUrl)
+    console.log(`${this.genesUrl}?gene=${this.name}`);
+    return this.http.get<Gene[]>(`${this.genesUrl}?gene=${this.name}`)
     .pipe(
       tap(genes => this.log(`fetched genes`)),
       catchError(this.handleError('getGenes', []))
