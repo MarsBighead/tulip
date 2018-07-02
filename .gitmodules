@@ -1,0 +1,15 @@
+[submodule "vendor/github.com/jmoiron/sqlx"]
+	path = vendor/github.com/jmoiron/sqlx
+	url = https://github.com/jmoiron/sqlx.git
+	branch = sqlx-v1.1
+[submodule "vendor/github.com/gorilla/schema"]
+	path = vendor/github.com/gorilla/schema
+	url = https://github.com/gorilla/schema.git
+[submodule "vendor/github.com/go-sql-driver/mysql"]
+	path = vendor/github.com/go-sql-driver/mysql
+	url = https://github.com/go-sql-driver/mysql.git
+[submodule "vendor/gopkg.in/yaml.v2"]
+	path = vendor/gopkg.in/yaml.v2
+	url = https://github.com/go-yaml/yaml.git
+[submodule "vendor/gopkg.in/yaml"]
+	v2 = branch

@@ -1,6 +1,7 @@
 #!/bin/bash
-ROJECT_DIR=$1
-ROJECT_DIR=${ROJECT_DIR:=$(pwd)/$(dirname $0)}
+PROJECT_DIR=$1
+PROJECT_DIR=${PROJECT_DIR:=$(cd $(pwd)/$(dirname $0); pwd)}
+echo "Project directory is $PROJECT_DIR ..."
 PROJECT=$2
 PROJECT=${PROJECT:=tulip}
 echo "Project $PROJECT's  directory is $PROJECT_DIR..."
@@ -17,7 +18,8 @@ if cid=$(docker ps -a|grep -o -E "build$"); then
 fi
 echo "Start build project $PROJECT"
 BUILD_CID=$(docker create  -it \
-	-v $APP_DIR:/go/src/$PROJECT \
+	-v $PROJECT_DIR:/go/src/$PROJECT \
 	--name build golang:$GOLANG \
 	/bin/bash /go/src/$PROJECT/scripts/build_backend.sh $PROJECT $PLATFORM)
+
 docker start $BUILD_CID
