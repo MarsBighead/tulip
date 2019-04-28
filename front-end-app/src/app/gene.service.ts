@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 
 import { Gene } from './gene';
-import { GENES } from './mock-genes';
+//import { GENES } from './mock-genes';
 import { MessageService } from './message.service';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -34,10 +34,10 @@ export class GeneService {
 
    /** GET hero by id. Return `undefined` when id not found */
    getGeneNo404<Data>(mode_name: string): Observable<Gene> {
-    const url = `${this.genesUrl}/${mode_name}`;
+    const url = `${this.genesUrl}&${mode_name}`;
     return this.http.get<Gene[]>(url)
       .pipe(
-        map(heroes => heroes[0]), // returns a {0|1} element array
+        map(genes => genes[0]), // returns a {0|1} element array
         tap(h => {
           const outcome = h ? `fetched` : `did not find`;
           this.log(`${outcome} gene mode_name=${mode_name} failed`);
@@ -48,7 +48,7 @@ export class GeneService {
 
   getGene(mode_name: string): Observable<Gene> {
     // TODO: send the message _after_ fetching the hero
-    const url = `${this.genesUrl}/?mode_name=${mode_name}`;
+    const url = `${this.genesUrl}?mode_name=${mode_name}`;
     console.log(url)
     return this.http.get<Gene>(url).pipe(
       tap(_ => this.log(`fetched hero mode_name=${mode_name}`)),

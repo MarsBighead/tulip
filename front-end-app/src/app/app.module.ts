@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { MatTableModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { GenesComponent } from './genes/genes.component';
@@ -22,6 +23,7 @@ import { HttpClientModule }    from '@angular/common/http';
   ],
   imports: [
     BrowserModule,
+    MatTableModule,
     FormsModule,
     AppRoutingModule,
     HttpClientModule,

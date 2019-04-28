@@ -1,4 +1,5 @@
 <h2>refGenes</h2>
+<!--
 <ul class="genes">
   <li *ngFor="let gene of genes"
   [class.selected]="gene === selectedGene" 
@@ -10,3 +11,61 @@
   </a>
   </li>
 </ul>
+-->
+<table mat-table [dataSource]="genes" class="mat-elevation-z8">
+
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+ <!-- Gene Column -->
+  <ng-container matColumnDef="gene">
+    <th mat-header-cell *matHeaderCellDef> Gene </th>
+    <td mat-cell *matCellDef="let element"> {{element.gene}} </td>
+  </ng-container>
+
+  <!-- mode_name Column -->
+  <ng-container matColumnDef="mode_name">
+    <th mat-header-cell *matHeaderCellDef> Mode Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.mode_name}} </td>
+  </ng-container>
+
+  <!-- mode_name Column -->
+  <ng-container matColumnDef="score">
+    <th mat-header-cell *matHeaderCellDef> Score </th>
+    <td mat-cell *matCellDef="let element"> {{element.score}} </td>
+  </ng-container>
+
+  <!-- chromosome Column -->
+  <ng-container matColumnDef="chromosome">
+    <th mat-header-cell *matHeaderCellDef> Chromosome </th>
+    <td mat-cell *matCellDef="let element"> {{element.chromosome}} </td>
+  </ng-container>
+
+  <!-- strand Column -->
+  <ng-container matColumnDef="strand">
+    <th mat-header-cell *matHeaderCellDef> Strand </th>
+    <td mat-cell *matCellDef="let element"> {{element.strand}} </td>
+  </ng-container>
+
+  <!-- exon_count Column -->
+  <ng-container matColumnDef="exon_count">
+    <th mat-header-cell *matHeaderCellDef> Exon Count </th>
+    <td mat-cell *matCellDef="let element"> {{element.exon_count}} </td>
+  </ng-container>
+
+  <!-- tx_start Column -->
+  <ng-container matColumnDef="tx_start">
+    <th mat-header-cell *matHeaderCellDef> Tx Start </th>
+    <td mat-cell *matCellDef="let element"> {{element.tx_start}} </td>
+  </ng-container>
+
+ 
+  <!-- tx_end Column -->
+  <ng-container matColumnDef="tx_end">
+    <th mat-header-cell *matHeaderCellDef> Tx End </th>
+    <td mat-cell *matCellDef="let element"> {{element.tx_end}} </td>
+  </ng-container>
+
+
+  <tr mat-header-row *matHeaderRowDef="genesColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: genesColumns;"></tr>
+</table>

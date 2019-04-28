@@ -14,7 +14,7 @@ export class GenesComponent implements OnInit {
   selectedGene: Gene;
   
   genes: Gene[];
-
+  genesColumns: string[] = ['gene', 'mode_name', 'chromosome', 'score', 'strand','exon_count', 'tx_start', 'tx_end' ];
   constructor(private geneService: GeneService) { }
 
   ngOnInit() {

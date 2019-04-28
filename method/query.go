@@ -32,9 +32,17 @@ func (s *Service) GivenGene(w http.ResponseWriter, r *http.Request) {
 	}
 	log.Println("Query result is on the way...")
 
-	body, err := json.MarshalIndent(geneRows, "", "    ")
-	if err != nil {
-		log.Fatal(err)
+	var body []byte
+	if len(geneRows) <= 1 {
+		body, err = json.MarshalIndent(geneRows[0], "", "    ")
+		if err != nil {
+			log.Fatal(err)
+		}
+	} else {
+		body, err = json.MarshalIndent(geneRows, "", "    ")
+		if err != nil {
+			log.Fatal(err)
+		}
 	}
 	w.Header().Add("Access-Control-Allow-Origin", "*")
 	w.Write(body)
