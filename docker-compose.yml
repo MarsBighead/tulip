@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  db:
+    container_name: mysql-1
+    image: hg38:1.0.1
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: togerme
+      MYSQL_DATABASE: hg38
+  tulip:
+    container_name: tulip
+    image: tulip:0.2.1
+    ports: 
+      - "8010:8010"
+    depends_on: 
+      - db
+    command: ["/opt/tulip/tulip"]

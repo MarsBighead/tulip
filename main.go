@@ -1,8 +1,11 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"net/http"
+	"os"
+	"path/filepath"
 	"tulip/method"
 
 	_ "github.com/go-sql-driver/mysql"
@@ -10,10 +13,16 @@ import (
 )
 
 func main() {
-	cfg, err := method.GetConfig("config.yaml")
+	configPath, err := getConfigPath()
 	if err != nil {
 		log.Fatal(err)
 	}
+
+	cfg, err := method.GetConfig(configPath)
+	if err != nil {
+		log.Fatal(err)
+	}
+	log.Println(cfg.GetDSN())
 	db, err := sqlx.Open("mysql", cfg.GetDSN())
 	if err != nil {
 		log.Fatal(err)
@@ -34,4 +43,35 @@ func main() {
 	}
 	log.Printf("Running Server on http://localhost:" + cfg.HTTP.PORT)
 	select {}
+}
+
+func getConfigPath() (string, error) {
+	currentPath, _ := os.Getwd()
+	dir, _ := filepath.Abs(filepath.Dir(os.Args[0]))
+
+	fmt.Println(dir)
+
+	path := currentPath + "/config.yaml"
+	ok, err := isPathExists(path)
+	if ok {
+		return path, nil
+	} else {
+		path = dir + "/config.yaml"
+		ok, err = isPathExists(path)
+		if ok {
+			return path, nil
+		}
+	}
+	return "", err
+}
+
+func isPathExists(path string) (bool, error) {
+	_, err := os.Stat(path)
+	if err == nil {
+		return true, nil
+	}
+	if os.IsNotExist(err) {
+		return false, nil
+	}
+	return false, err
 }
